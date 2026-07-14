@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playwrite+NZ:wght@100..400&family=Syne:wght@500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-cocoa: #34261f;
+  --color-petal: #f3a1c5;
+  --color-icing: #fff6fa;
+  --color-berry: #d94d75;
+  --color-blush: #edcad9;
+  --color-mauve: #7e3654;
+  --color-bark: #271a13;
+  --color-line: #6d4e41;
+  --font-body: "DM Sans", sans-serif;
+  --font-display: "Syne", sans-serif;
+  --font-script: "Playwrite NZ", cursive;
+}
+
+@layer base {
+  html { @apply min-h-full w-full scroll-smooth bg-cocoa; }
+  body { @apply min-h-full min-w-[320px] w-full bg-cocoa font-body text-icing; }
+  a { text-decoration: none; }
+  a:focus-visible { outline: 3px solid var(--color-icing); outline-offset: 4px; }
+}
