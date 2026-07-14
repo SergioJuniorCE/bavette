@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playwrite+NZ:wght@100..400&family=Syne:wght@500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playwrite+NZ:wght@100..400&family=Syne:wght@500;600;700;800&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -16,8 +16,17 @@
 }
 
 @layer base {
-  html { @apply min-h-full w-full scroll-smooth bg-cocoa; }
-  body { @apply min-h-full min-w-[320px] w-full bg-cocoa font-body text-icing; }
-  a { text-decoration: none; }
-  a:focus-visible { outline: 3px solid var(--color-icing); outline-offset: 4px; }
+  html {
+    @apply min-h-full w-full scroll-smooth bg-cocoa;
+  }
+  body {
+    @apply min-h-full min-w-[320px] w-full bg-cocoa font-body text-icing;
+  }
+  a {
+    text-decoration: none;
+  }
+  a:focus-visible {
+    outline: 3px solid var(--color-icing);
+    outline-offset: 4px;
+  }
 }
