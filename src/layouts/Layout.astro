@@ -51,7 +51,7 @@ const structuredData = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#34261f" />
+    <meta name="theme-color" content="#34261f" id="theme-color" />
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {canonical && <link rel="canonical" href={canonical} />}
@@ -79,6 +79,24 @@ const structuredData = {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <script is:inline>
+      (() => {
+        const savedTheme = localStorage.getItem("bavette-theme");
+        const theme =
+          savedTheme === "light" || savedTheme === "dark"
+            ? savedTheme
+            : matchMedia("(prefers-color-scheme: light)").matches
+              ? "light"
+              : "dark";
+
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+        document.querySelector("#theme-color")?.setAttribute(
+          "content",
+          theme === "dark" ? "#34261f" : "#fff6fa",
+        );
+      })();
+    </script>
   </head>
   <body>
     <slot />

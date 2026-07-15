@@ -18,6 +18,17 @@ const home = Astro.url.pathname === "/" ? "" : "/";
       <a href={`${home}#contacto`}>Contacto</a>
     </div>
 
+    <button class="theme-toggle" type="button" role="switch" aria-checked="false">
+      <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3.5"></circle>
+        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+      </svg>
+      <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
+        <path d="M20 15.2A8.5 8.5 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z"></path>
+      </svg>
+      <span class="sr-only">Tema oscuro</span>
+    </button>
+
     <a
       class="nav-cta"
       href={whatsappUrl || site.instagramUrl}
@@ -39,3 +50,28 @@ const home = Astro.url.pathname === "/" ? "" : "/";
     </details>
   </nav>
 </header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>(".theme-toggle");
+
+  const updateToggle = (theme: "light" | "dark") => {
+    if (!toggle) return;
+    const nextTheme = theme === "dark" ? "claro" : "oscuro";
+    toggle.setAttribute("aria-checked", String(theme === "dark"));
+    toggle.setAttribute("title", `Cambiar al tema ${nextTheme}`);
+  };
+
+  if (toggle) {
+    updateToggle(document.documentElement.dataset.theme === "light" ? "light" : "dark");
+    toggle.addEventListener("click", () => {
+      const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+      localStorage.setItem("bavette-theme", theme);
+      document
+        .querySelector("#theme-color")
+        ?.setAttribute("content", theme === "dark" ? "#34261f" : "#fff6fa");
+      updateToggle(theme);
+    });
+  }
+</script>

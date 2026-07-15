@@ -24,6 +24,22 @@
   body {
     @apply m-0 min-h-full min-w-[320px] w-full bg-cocoa font-body text-icing antialiased;
   }
+  html,
+  body,
+  .site-header,
+  .hero,
+  .menu-section,
+  .product-card,
+  .order-section,
+  .proof-section,
+  .site-footer,
+  .content-page,
+  .error-page {
+    transition:
+      background-color 220ms ease,
+      color 220ms ease,
+      border-color 220ms ease;
+  }
   a {
     text-decoration: none;
   }
@@ -124,6 +140,69 @@
     color: var(--color-icing);
     font-size: 0.75rem;
     white-space: nowrap;
+  }
+  .theme-toggle {
+    position: relative;
+    display: block;
+    flex: 0 0 auto;
+    width: 3.25rem;
+    height: 1.85rem;
+    padding: 0;
+    border: 1px solid rgb(243 161 197 / 45%);
+    border-radius: 999px;
+    background: rgb(243 161 197 / 8%);
+    color: var(--color-petal);
+    transition:
+      background-color 180ms ease,
+      color 180ms ease,
+      transform 180ms ease;
+  }
+  .theme-toggle::before {
+    content: "";
+    position: absolute;
+    left: 0.22rem;
+    top: 0.22rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    transform: translateX(1.42rem);
+    border-radius: 50%;
+    background: var(--color-petal);
+    transition: transform 180ms ease;
+  }
+  .theme-toggle:hover {
+    transform: rotate(8deg);
+    background: rgb(243 161 197 / 12%);
+  }
+  .theme-icon {
+    position: absolute;
+    z-index: 1;
+    top: 0.4rem;
+    width: 1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.7;
+    transition: opacity 180ms ease;
+  }
+  .theme-icon-sun {
+    left: 0.36rem;
+    opacity: 0.35;
+  }
+  .theme-icon-moon {
+    right: 0.36rem;
+    color: var(--color-cocoa);
+  }
+  [data-theme="light"] .theme-toggle::before {
+    transform: translateX(0);
+  }
+  [data-theme="light"] .theme-icon-sun {
+    color: var(--color-icing);
+    opacity: 1;
+  }
+  [data-theme="light"] .theme-icon-moon {
+    color: var(--color-mauve);
+    opacity: 0.4;
   }
   .mobile-nav {
     display: none;
@@ -814,6 +893,74 @@
   }
 }
 
+html[data-theme="light"],
+html[data-theme="light"] body {
+  background: var(--color-icing);
+  color: var(--color-cocoa);
+}
+html[data-theme="light"] .site-header {
+  background: rgb(255 246 250 / 96%);
+  border-bottom-color: rgb(126 54 84 / 15%);
+}
+html[data-theme="light"] .brand,
+html[data-theme="light"] .desktop-nav a:hover,
+html[data-theme="light"] .nav-cta:hover {
+  color: var(--color-mauve);
+}
+html[data-theme="light"] .desktop-nav,
+html[data-theme="light"] .nav-cta,
+html[data-theme="light"] .mobile-nav summary {
+  color: var(--color-cocoa);
+}
+html[data-theme="light"] .theme-toggle {
+  border-color: rgb(126 54 84 / 35%);
+  color: var(--color-mauve);
+}
+html[data-theme="light"] .hero,
+html[data-theme="light"] .order-section,
+html[data-theme="light"] .site-footer,
+html[data-theme="light"] .error-page {
+  background: var(--color-icing);
+  color: var(--color-cocoa);
+}
+html[data-theme="light"] .hero-intro,
+html[data-theme="light"] .text-link,
+html[data-theme="light"] .hero-visual figcaption,
+html[data-theme="light"] .order-copy > p:not(.eyebrow),
+html[data-theme="light"] .order-form label,
+html[data-theme="light"] .form-help,
+html[data-theme="light"] .copy-status,
+html[data-theme="light"] .site-footer,
+html[data-theme="light"] .error-page > p:not(.eyebrow) {
+  color: var(--color-line);
+}
+html[data-theme="light"] .order-form {
+  background: rgb(243 161 197 / 10%);
+}
+html[data-theme="light"] .button-outline {
+  color: var(--color-cocoa);
+}
+
+html[data-theme="dark"] .menu-section,
+html[data-theme="dark"] .proof-section,
+html[data-theme="dark"] .content-page {
+  background: #402e26;
+  color: var(--color-icing);
+}
+html[data-theme="dark"] .product-card {
+  background: #49352c;
+  border-color: rgb(243 161 197 / 15%);
+}
+html[data-theme="dark"] .product-content > p:nth-of-type(2),
+html[data-theme="dark"] .testimonial-placeholder small,
+html[data-theme="dark"] .content-page article p {
+  color: var(--color-blush);
+}
+html[data-theme="dark"] .testimonial-placeholder,
+html[data-theme="dark"] .allergen-note {
+  background: rgb(243 161 197 / 8%);
+}
+
 @media (max-width: 900px) {
   .desktop-nav,
   .nav-cta {
@@ -955,6 +1102,7 @@
     animation-iteration-count: 1 !important;
   }
   .button:hover,
+  .theme-toggle:hover,
   .product-card:hover .product-image img {
     transform: none;
   }
