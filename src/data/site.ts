@@ -5,6 +5,7 @@ export const site = {
     "Pasteles y cupcakes personalizados, además de servicio de café, en Ciudad Obregón, Sonora.",
   instagramHandle: "@bavettereposteria",
   instagramUrl: "https://www.instagram.com/bavettereposteria/",
+  facebookUrl: "https://www.facebook.com/bavettereposteria",
   // Replace these values as soon as the client confirms them.
   whatsappNumber: "5216442266088",
   email: "lechugac27@gmail.com",
