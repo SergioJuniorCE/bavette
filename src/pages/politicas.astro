@@ -1,0 +1,94 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { site } from "../data/site";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title={`Políticas | ${site.shortName}`}
+  description="Información sobre pedidos, cambios, cancelaciones y privacidad de Bavette."
+  noindex
+>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <Header />
+  <main class="content-page" id="contenido">
+    <header>
+      <p class="eyebrow">Borrador pendiente de aprobación</p>
+      <h1>Políticas de pedidos y privacidad</h1>
+      <p>
+        Esta página organiza la información que Bavette debe confirmar. No debe
+        publicarse como política definitiva hasta recibir aprobación del negocio.
+      </p>
+    </header>
+
+    <article>
+      <section>
+        <h2>Pedidos y disponibilidad</h2>
+        <p>
+          La anticipación mínima es: <strong>{site.leadTime}</strong>. Solicitar una
+          cotización no reserva una fecha. Bavette debe confirmar por escrito la
+          disponibilidad y las condiciones de cada pedido.
+        </p>
+      </section>
+
+      <section>
+        <h2>Pagos y anticipos</h2>
+        <p>
+          {site.payment}. El cliente debe recibir el monto, la fecha límite y el
+          método de pago directamente de Bavette antes de transferir dinero.
+        </p>
+      </section>
+
+      <section>
+        <h2>Cambios, cancelaciones y reembolsos</h2>
+        <p>
+          Plazos, cargos, condiciones de cambio, cancelación y reembolso pendientes
+          de confirmación. También debe definirse qué ocurre cuando Bavette no puede
+          completar un pedido confirmado.
+        </p>
+      </section>
+
+      <section>
+        <h2>Entrega y recolección bajo solicitud</h2>
+        <p>
+          {site.delivery}. El cliente debe confirmar dirección, horario y persona
+          responsable de recibir el pedido. Deben documentarse las condiciones para
+          demoras, entregas fallidas o pedidos no recogidos.
+        </p>
+      </section>
+
+      <section>
+        <h2>Ingredientes y alérgenos</h2>
+        <p>
+          La lista de ingredientes, alérgenos presentes y medidas contra contaminación
+          cruzada está pendiente. Las personas con alergias severas deben consultar
+          antes de ordenar y no asumir que un producto es libre de alérgenos.
+        </p>
+      </section>
+
+      <section>
+        <h2>Conservación y responsabilidad</h2>
+        <p>
+          Las instrucciones de transporte, refrigeración, vida útil y servicio están
+          pendientes. Bavette debe indicar por escrito cómo conservar cada pedido una
+          vez entregado.
+        </p>
+      </section>
+
+      <section>
+        <h2>Privacidad</h2>
+        <p>
+          El formulario del sitio prepara un mensaje dentro del navegador y no envía
+          ni almacena información. Al contactar por Instagram o WhatsApp, los datos se
+          procesan conforme a las políticas de esas plataformas. Si se instala
+          analítica o un formulario conectado, esta política debe actualizarse antes
+          de publicarlo.
+        </p>
+      </section>
+
+      <a class="button button-pink" href="/#contacto">Volver a contacto</a>
+    </article>
+  </main>
+  <Footer />
+</Layout>

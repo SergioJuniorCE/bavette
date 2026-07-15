@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Bavette Repostería y Snacks</title>
+  <desc id="desc">Pasteles, postres y detalles dulces hechos por encargo.</desc>
+  <rect width="1200" height="630" fill="#34261f"/>
+  <circle cx="1050" cy="90" r="210" fill="#d94d75"/>
+  <circle cx="1010" cy="590" r="260" fill="#f3a1c5"/>
+  <path d="M930 200c120 50 170 155 110 250" fill="none" stroke="#edcad9" stroke-width="10"/>
+  <text x="95" y="160" fill="#f3a1c5" font-family="cursive" font-size="64">Bavette</text>
+  <text x="95" y="300" fill="#fff6fa" font-family="Arial, sans-serif" font-size="78" font-weight="700">UN PEDACITO</text>
+  <text x="95" y="385" fill="#fff6fa" font-family="Arial, sans-serif" font-size="78" font-weight="700">DE FELICIDAD.</text>
+  <text x="100" y="480" fill="#edcad9" font-family="Arial, sans-serif" font-size="28">Repostería y snacks hechos por encargo</text>
+</svg>

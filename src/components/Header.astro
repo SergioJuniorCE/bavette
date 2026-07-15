@@ -1,0 +1,41 @@
+---
+import { site, whatsappUrl } from "../data/site";
+
+const home = Astro.url.pathname === "/" ? "" : "/";
+---
+
+<header class="site-header">
+  <nav class="nav-shell" aria-label="Navegación principal">
+    <a class="brand" href={`${home}#inicio`} aria-label="Bavette, inicio">
+      <span>Bavette</span>
+      <small>Repostería y snacks</small>
+    </a>
+
+    <div class="desktop-nav">
+      <a href={`${home}#menu`}>Menú</a>
+      <a href={`${home}#encargos`}>Encargos</a>
+      <a href={`${home}#preguntas`}>Preguntas</a>
+      <a href={`${home}#contacto`}>Contacto</a>
+    </div>
+
+    <a
+      class="nav-cta"
+      href={whatsappUrl || site.instagramUrl}
+      target="_blank"
+      rel="noreferrer"
+    >
+      Hacer un pedido <span aria-hidden="true">↗</span>
+      <span class="sr-only">(se abre en una pestaña nueva)</span>
+    </a>
+
+    <details class="mobile-nav">
+      <summary aria-label="Abrir menú">Menú</summary>
+      <div>
+        <a href={`${home}#menu`}>Menú y precios</a>
+        <a href={`${home}#encargos`}>Cómo encargar</a>
+        <a href={`${home}#preguntas`}>Preguntas frecuentes</a>
+        <a href={`${home}#contacto`}>Contacto</a>
+      </div>
+    </details>
+  </nav>
+</header>

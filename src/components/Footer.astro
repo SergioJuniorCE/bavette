@@ -1,0 +1,24 @@
+---
+import { site } from "../data/site";
+---
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <a class="footer-brand" href="/#inicio">Bavette</a>
+    <p>{site.description}</p>
+    <nav aria-label="Navegación del pie de página">
+      <a href="/#menu">Menú</a>
+      <a href="/#encargos">Encargos</a>
+      <a href="/#preguntas">Preguntas</a>
+      <a href="/politicas/">Políticas</a>
+      <a href={site.instagramUrl} target="_blank" rel="noreferrer">
+        Instagram <span aria-hidden="true">↗</span>
+        <span class="sr-only">(se abre en una pestaña nueva)</span>
+      </a>
+    </nav>
+  </div>
+  <div class="footer-meta">
+    <span>© {new Date().getFullYear()} {site.name}</span>
+    <span>Hecho con mucho amor</span>
+  </div>
+</footer>

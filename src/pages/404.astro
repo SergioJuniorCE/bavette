@@ -1,0 +1,21 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Página no encontrada | Bavette"
+  description="La página que buscas no está disponible."
+  noindex
+>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <Header />
+  <main class="error-page" id="contenido">
+    <p class="eyebrow">Error 404</p>
+    <h1>Esta rebanada<br />ya no está.</h1>
+    <p>La página cambió de lugar o nunca estuvo en la vitrina.</p>
+    <a class="button button-pink" href="/">Volver al inicio</a>
+  </main>
+  <Footer />
+</Layout>

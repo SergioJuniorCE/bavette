@@ -1,46 +1,53 @@
-# Astro Starter Kit: Basics
+# Bavette
+
+Sitio de Bavette Repostería y Snacks, construido con Astro y Tailwind CSS.
+
+## Desarrollo
 
 ```sh
-bun create astro@latest -- --template basics
+bun install
+bun run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+El sitio abre en `https://bavette.localhost` mediante Portless, sin un número de
+puerto visible. Portless requiere Node.js 24 o posterior y puede solicitar
+permisos la primera vez para instalar su certificado HTTPS local.
 
-## 🚀 Project Structure
+Para iniciar Astro directamente en segundo plano, sin Portless:
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+astro dev --background
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Comandos disponibles:
 
-## 🧞 Commands
+```sh
+bun run format
+bun run lint
+bun run build
+```
 
-All commands are run from the root of the project, from a terminal:
+## Contenido del negocio
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+Los datos que deben confirmar el cliente se encuentran centralizados en
+`src/data/site.ts`. Los productos temporales están en `src/pages/index.astro`.
+Busca `por confirmar`, `pendiente` y `temporal` antes de publicar.
 
-## 👀 Want to learn more?
+La página `/politicas/` es un borrador con `noindex` y necesita aprobación del
+cliente y, cuando corresponda, revisión legal.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Producción
+
+Define `SITE_URL` con el dominio final para generar URLs canónicas y metadatos
+sociales absolutos:
+
+```sh
+SITE_URL=https://dominio.com bun run build
+```
+
+El sitemap se genera automáticamente cuando `SITE_URL` está definido. Cuando se
+confirme el dominio, agrega su URL del sitemap a `public/robots.txt`.
+
+Antes de lanzar también se deben reemplazar las imágenes remotas de referencia
+por fotografías originales optimizadas y convertir `public/social-card.svg` a
+PNG de 1200 × 630 para máxima compatibilidad con redes sociales.
