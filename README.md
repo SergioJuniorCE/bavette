@@ -29,12 +29,17 @@ bun run build
 
 ## Contenido del negocio
 
-Los datos que deben confirmar el cliente se encuentran centralizados en
-`src/data/site.ts`. Los productos temporales están en `src/pages/index.astro`.
-Busca `por confirmar`, `pendiente` y `temporal` antes de publicar.
+Los datos de contacto, horarios, entrega, pagos y anticipos se encuentran
+centralizados en `src/data/site.ts`. El menú y los enlaces de pedido por WhatsApp
+están en `src/pages/index.astro`.
 
-La página `/politicas/` es un borrador con `noindex` y necesita aprobación del
-cliente y, cuando corresponda, revisión legal.
+El sitio no instala analítica. Los enlaces de pedido abren WhatsApp Business con
+un mensaje inicial para solicitar disponibilidad y cotización.
+
+Antes de publicar deben agregarse los precios, la ficha de ingredientes y
+alérgenos, fotografías originales, testimonios autorizados y la URL directa de
+Facebook si la página tiene una dirección personalizada. `/politicas/` conserva
+`noindex` hasta recibir aprobación final y revisión legal si corresponde.
 
 ## Producción
 

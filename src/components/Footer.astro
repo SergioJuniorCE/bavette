@@ -1,28 +1,38 @@
 ---
-import { site } from "../data/site";
+import { site, whatsappOrderUrl } from "../data/site";
 ---
 
 <footer class="site-footer">
   <div class="footer-main">
-    <a class="footer-brand" href="/#inicio">Bavette</a>
-    <p>{site.description}</p>
+    <div class="footer-brand-lockup">
+      <a class="footer-brand" href="/#inicio">Bavette</a>
+      <p>Repostería y snacks hechos para acompañar tus mejores momentos.</p>
+    </div>
+
+    <div class="footer-contact">
+      <span class="footer-label">Pedidos y cotizaciones</span>
+      <a href={whatsappOrderUrl} target="_blank" rel="noreferrer">WhatsApp Business</a>
+      <a href={`tel:+52${site.phoneDisplay.replaceAll(" ", "")}`}>{site.phoneDisplay}</a>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+
     <nav aria-label="Navegación del pie de página">
+      <span class="footer-label">Explora</span>
       <a href="/#menu">Menú</a>
-      <a href="/#encargos">Encargos</a>
-      <a href="/#preguntas">Preguntas</a>
+      <a href="/#encargos">Cómo pedir</a>
+      <a href="/#preguntas">Preguntas frecuentes</a>
       <a href="/politicas/">Políticas</a>
-      <a href={site.instagramUrl} target="_blank" rel="noreferrer">
-        Instagram <span aria-hidden="true">↗</span>
-        <span class="sr-only">(se abre en una pestaña nueva)</span>
-      </a>
-      <a href={site.facebookUrl} target="_blank" rel="noreferrer">
-        Facebook <span aria-hidden="true">↗</span>
-        <span class="sr-only">(se abre en una pestaña nueva)</span>
-      </a>
+    </nav>
+
+    <nav aria-label="Redes sociales">
+      <span class="footer-label">Síguenos</span>
+      <a href={site.instagramUrl} target="_blank" rel="noreferrer">Instagram</a>
+      <a href={site.facebookUrl} target="_blank" rel="noreferrer">Facebook</a>
     </nav>
   </div>
+
   <div class="footer-meta">
     <span>© {new Date().getFullYear()} {site.name}</span>
-    <span>Hecho con mucho amor</span>
+    <span>{site.city}</span>
   </div>
 </footer>

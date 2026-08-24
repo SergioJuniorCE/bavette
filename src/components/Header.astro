@@ -1,5 +1,5 @@
 ---
-import { site, whatsappUrl } from "../data/site";
+import { whatsappOrderUrl } from "../data/site";
 
 const home = Astro.url.pathname === "/" ? "" : "/";
 ---
@@ -7,43 +7,34 @@ const home = Astro.url.pathname === "/" ? "" : "/";
 <header class="site-header">
   <nav class="nav-shell" aria-label="Navegación principal">
     <a class="brand" href={`${home}#inicio`} aria-label="Bavette, inicio">
-      <span>Bavette</span>
-      <small>Repostería y snacks</small>
+      <span class="brand-name">Bavette</span>
+      <span class="brand-detail">Repostería y snacks</span>
     </a>
 
     <div class="desktop-nav">
       <a href={`${home}#menu`}>Menú</a>
-      <a href={`${home}#encargos`}>Encargos</a>
-      <a href={`${home}#preguntas`}>Preguntas</a>
+      <a href={`${home}#sabores`}>Sabores</a>
+      <a href={`${home}#encargos`}>Cómo pedir</a>
       <a href={`${home}#contacto`}>Contacto</a>
     </div>
 
-    <button class="theme-toggle" type="button" role="switch" aria-checked="false">
-      <svg class="theme-icon theme-icon-sun" aria-hidden="true" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="3.5"></circle>
-        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
-      </svg>
-      <svg class="theme-icon theme-icon-moon" aria-hidden="true" viewBox="0 0 24 24">
-        <path d="M20 15.2A8.5 8.5 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z"></path>
-      </svg>
-      <span class="sr-only">Tema oscuro</span>
+    <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Cambiar al tema oscuro">
+      <span class="theme-toggle-mark" aria-hidden="true"></span>
+      <span class="theme-toggle-label">Tema</span>
     </button>
 
-    <a
-      class="nav-cta"
-      href={whatsappUrl || site.instagramUrl}
-      target="_blank"
-      rel="noreferrer"
-    >
-      Hacer un pedido <span aria-hidden="true">↗</span>
+    <a class="nav-cta" href={whatsappOrderUrl} target="_blank" rel="noreferrer">
+      Pedir por WhatsApp
+      <span aria-hidden="true">↗</span>
       <span class="sr-only">(se abre en una pestaña nueva)</span>
     </a>
 
     <details class="mobile-nav">
       <summary aria-label="Abrir menú">Menú</summary>
       <div>
-        <a href={`${home}#menu`}>Menú y precios</a>
-        <a href={`${home}#encargos`}>Cómo encargar</a>
+        <a href={`${home}#menu`}>Menú</a>
+        <a href={`${home}#sabores`}>Sabores</a>
+        <a href={`${home}#encargos`}>Cómo pedir</a>
         <a href={`${home}#preguntas`}>Preguntas frecuentes</a>
         <a href={`${home}#contacto`}>Contacto</a>
       </div>
@@ -53,25 +44,27 @@ const home = Astro.url.pathname === "/" ? "" : "/";
 
 <script>
   const toggle = document.querySelector<HTMLButtonElement>(".theme-toggle");
+  const root = document.documentElement;
 
-  const updateToggle = (theme: "light" | "dark") => {
+  const updateThemeToggle = () => {
     if (!toggle) return;
-    const nextTheme = theme === "dark" ? "claro" : "oscuro";
-    toggle.setAttribute("aria-checked", String(theme === "dark"));
-    toggle.setAttribute("title", `Cambiar al tema ${nextTheme}`);
+    const isDark = root.dataset.theme === "dark";
+    const nextTheme = isDark ? "claro" : "oscuro";
+    toggle.setAttribute("aria-pressed", String(isDark));
+    toggle.setAttribute("aria-label", `Cambiar al tema ${nextTheme}`);
   };
 
-  if (toggle) {
-    updateToggle(document.documentElement.dataset.theme === "light" ? "light" : "dark");
-    toggle.addEventListener("click", () => {
-      const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-      document.documentElement.dataset.theme = theme;
-      document.documentElement.style.colorScheme = theme;
-      localStorage.setItem("bavette-theme", theme);
-      document
-        .querySelector("#theme-color")
-        ?.setAttribute("content", theme === "dark" ? "#34261f" : "#fff6fa");
-      updateToggle(theme);
-    });
-  }
+  updateThemeToggle();
+
+  toggle?.addEventListener("click", () => {
+    const theme = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = theme;
+    root.style.colorScheme = theme;
+    localStorage.setItem("bavette-theme", theme);
+    document.querySelector("#theme-color")?.setAttribute(
+      "content",
+      theme === "dark" ? "#201a19" : "#fcfbf7",
+    );
+    updateThemeToggle();
+  });
 </script>
