@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "portless bavette astro dev",
+    "dev": "node scripts/portless-dev.mjs",
     "dev:direct": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
