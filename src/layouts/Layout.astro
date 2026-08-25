@@ -24,8 +24,14 @@ const structuredData = {
   name: site.name,
   description: site.description,
   email: site.email,
-  telephone: "+52 1 644 226 6088",
+  telephone: "+52 644 226 6088",
   areaServed: site.serviceArea,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Ciudad Obregón",
+    addressRegion: "Sonora",
+    addressCountry: "MX",
+  },
   paymentAccepted: site.payment,
   openingHoursSpecification: [
     {
@@ -41,28 +47,21 @@ const structuredData = {
       closes: "13:00",
     },
   ],
-  url: canonical?.origin,
-  sameAs: [site.instagramUrl, site.facebookUrl],
+  url: canonical?.href,
+  sameAs: [site.instagramUrl],
 };
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es-MX" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#34261f" id="theme-color" />
+    <meta name="theme-color" content="#fcfbf7" id="theme-color" />
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {canonical && <link rel="canonical" href={canonical} />}
-
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playwrite+NZ:wght@100..400&family=Syne:wght@500;600;700;800&display=swap"
-    />
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_MX" />
@@ -82,18 +81,12 @@ const structuredData = {
     <script is:inline>
       (() => {
         const savedTheme = localStorage.getItem("bavette-theme");
-        const theme =
-          savedTheme === "light" || savedTheme === "dark"
-            ? savedTheme
-            : matchMedia("(prefers-color-scheme: light)").matches
-              ? "light"
-              : "dark";
-
+        const theme = savedTheme === "dark" ? "dark" : "light";
         document.documentElement.dataset.theme = theme;
         document.documentElement.style.colorScheme = theme;
         document.querySelector("#theme-color")?.setAttribute(
           "content",
-          theme === "dark" ? "#34261f" : "#fff6fa",
+          theme === "dark" ? "#201a19" : "#fcfbf7",
         );
       })();
     </script>
